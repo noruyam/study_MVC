@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
+ *
+ * 정적컨텐츠/MVC/API 방식
+ * 1. 정적컨텐츠 : 내용 그대로 반환
+ * 2. MVC : 모델을 반환
+ * 3. API : 객체반환
+ *
  * @ResponseBody 어노테이션이
  * 
  * 없을땐 : viewResolver 동작
