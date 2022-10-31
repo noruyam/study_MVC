@@ -1,10 +1,12 @@
 package study.study_MVC.repository;
 
+import org.springframework.stereotype.Repository;
 import study.study_MVC.domain.Member;
 
 import java.util.*;
 
-public class MemoryMemberRepository implements MemberRepository{
+@Repository
+public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
@@ -33,7 +35,7 @@ public class MemoryMemberRepository implements MemberRepository{
         return new ArrayList<>(store.values());
     }
 
-    public void clearStore(){
+    public void clearStore() {
         store.clear();
     }
 }

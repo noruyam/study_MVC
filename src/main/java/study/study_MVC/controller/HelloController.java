@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 3. API : 객체반환
  *
  * @ResponseBody 어노테이션이
- * 
+ *
  * 없을땐 : viewResolver 동작
  * 해당 return에 있는 값에 맞는 html을 찾아준다
  *
