@@ -1,10 +1,14 @@
 package study.study_MVC;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import study.study_MVC.repository.JdbcMemberRepository;
 import study.study_MVC.repository.MemberRepository;
 import study.study_MVC.repository.MemoryMemberRepository;
 import study.study_MVC.service.MemberService;
+
+import javax.sql.DataSource;
 
 
 /**
@@ -28,16 +32,24 @@ import study.study_MVC.service.MemberService;
  * > 스프링 컨테이너, DI 관련된 자세한 내용은 스프링 핵심 원리 강의에서 설명한다
  *
  */
-//@Configuration
-//public class SpringConfig {
-//
-//    @Bean
-//    public MemberService memberService(){
-//        return new MemberService(memberRepository());
-//    }
-//
-//    @Bean
-//    public MemberRepository memberRepository(){
+@Configuration
+public class SpringConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    @Bean
+    public MemberService memberService(){
+        return new MemberService(memberRepository());
+    }
+
+    @Bean
+    public MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();
-//    }
-//}
+        return new JdbcMemberRepository(dataSource);
+    }
+}
